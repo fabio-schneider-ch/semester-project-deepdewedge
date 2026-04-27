@@ -79,7 +79,7 @@ Use this hierarchy in order. Move to the next level only if the current one does
 
 
 ---
-
+iE
 ## Week 1 — Understanding & Reproduction
 
 **Goal:** Run the full pipeline end-to-end. Build physical intuition for the missing wedge.  
