@@ -25,3 +25,33 @@
 
 
 ## 2026-04-28
+
+### What I did
+- Setup the Step1 jupyter notebook from the tutorial
+- Analyzing "prepare_data" parameters and "shared" parameter to understand what I can adjust and what is given as input
+- Plotted 5 sub-tomogram pairs (even frame vs odd frame) side by side
+- read fourier.py, understanding of the fft and iftt, dimensions and mask multiplication
+
+### What I tried / what failed
+- !conda run -n ddw_env ddw prepare-data → conda: command not found
+- !ddw prepare-data → ddw: command not found
+- Fixed: Euler's Jupyterhub shell has a minimal PATH, does not include the conda env.
+- Had to workaround this by looking for the correct directory via sys.executable. This is in the same dir as the needed ddw. get the directory name and join the ddw path in order to use 'prepare-data'.
+- Tried editing kernel.json, failed miserably and lost it, had to register again
+- Struggled with the understanding of the mask in missing_wedge.py¨
+
+### Technical details & thoughts
+- Apparently my conda environment is setup correctly after checking with AI.
+- Understanding the data input, the tilt series t is already split up and filtered back-projection (FBP) is applied. We simply load the two different tomogram data. Dimension analysis and understanding how to get different slices from the v0 and v1 volumes.
+- 144 sub-tomograms saved for fitting, 36 for validation (80/20 split)
+- after sketching the plane normal, realized k=(kx, ky, kz) cannot be true. Analyzed the dimensions of the tomogram. Found out:
+tomo[half[0], :, :]  = X-Y slice  → axis 0 is z
+tomo[:, half[1], :]  = X-Z slice  → axis 1 is y
+tomo[:, :, half[2]]  = Y-Z slice  → axis 2 is x.
+Thus k = (kz, ky, kx)
+
+# TODO **End-of-day checkpoint:** 5-panel figure showing how the wedge shape changes with angle.
+
+
+
+## 2026-04-28
