@@ -50,8 +50,30 @@ tomo[:, half[1], :]  = X-Z slice  → axis 1 is y
 tomo[:, :, half[2]]  = Y-Z slice  → axis 2 is x.
 Thus k = (kz, ky, kx)
 
-# TODO **End-of-day checkpoint:** 5-panel figure showing how the wedge shape changes with angle.
 
 
 
 ## 2026-04-28
+
+### What I did
+- Read and analyzed the subtomo_dataset.py and masked_loss.py
+- Understanding of how the masks work, how the loss calculation uses the different masks to make sure no region without actual information gets used for loss calculation.
+- Answering Questions from day three plan.
+
+
+### What I tried / what failed
+- Tried to setup my jupyterhub server with GPUs, this did not work! Need to ask Yves Acremann on how to get permission for GPU access on ETH Euler.
+- Connection problems, recorded in the error directory
+- Running the fit-model on GPUs from Euler Cluster, My account does not have access yet to GPUs. That is why everything worked until now but I could not access JupyterHub with GPUs. Currently in contact with IT support of Euler Cluster because of this. Could not launch the training.
+
+### Technical details & thoughts
+- Q1: Why are sub-tomograms extracted at √2 × target size?
+- A1: Because a random rotated cube needs more space than the original cube, to account for this and not loose information at the boundary depending on the rotation we extract a bigger volume for the initial volume. Than later crop it down to target size.
+- Q2: How does random 3D rotation work, and why does it help?
+- A2: Both subtomo0 and subtomo1 get randomly rotated (same rotation for both), this helps s. t. our network does not just learn the reconstruction in one direction.
+- Q3: What exactly gets fed into the model vs. what is the training target?
+- A3: rotated subtomo0 + the artificial wedge (mask) is used as model input. rotated subtomo1 is used as the model target.
+- Q4: Why is the loss computed only over the missing wedge region? 
+- A4: This is wrong in my opinion, the loss is calculated everywhere except the original missing wedge region. There exist two regions and they are differently weighted. (outside and inside artificial mask)
+- Q5: What would happen if you computed loss everywhere?
+- A5: We would use regions where we do not have a ground truth as a indicator for our model (loss), makes no sense since this region does not have good or complete information that would be helpful for reconstruction.
