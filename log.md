@@ -53,12 +53,14 @@ Thus k = (kz, ky, kx)
 
 
 
-## 2026-04-28
+## 2026-05-04
 
 ### What I did
 - Read and analyzed the subtomo_dataset.py and masked_loss.py
 - Understanding of how the masks work, how the loss calculation uses the different masks to make sure no region without actual information gets used for loss calculation.
 - Answering Questions from day three plan.
+- Complete sketch of the U-Net architecture, encoder and decoder with skips.
+- Reading and understanding the unet.py
 
 
 ### What I tried / what failed
@@ -77,3 +79,30 @@ Thus k = (kz, ky, kx)
 - A4: This is wrong in my opinion, the loss is calculated everywhere except the original missing wedge region. There exist two regions and they are differently weighted. (outside and inside artificial mask)
 - Q5: What would happen if you computed loss everywhere?
 - A5: We would use regions where we do not have a ground truth as a indicator for our model (loss), makes no sense since this region does not have good or complete information that would be helpful for reconstruction.
+
+### MISSING
+- "launch training: ddw fit-model --config config.yaml
+- Monitor metrics.csv: watch fitting loss and val loss decrease
+
+
+
+
+
+## 2026-05-05
+
+### What I did
+- Email contact with IT Support from Euler Cluster, could not help -> mail towards ETH D-PHYS and Yves Acremann (ETH Supervisor)
+- Read and analyzed fit_model.py, answered the questions and built a deep understanding of how our training works.
+- read and analyzed subtomos.py creation of subtomos out of the huge raw tomograph data. (cubic window slicing) answered the questions aswell
+- read and analyzed normalization.py how when and why we use normalization. Smart approach behind the normalization.
+- Wrote a short note explaining the full data flow. Was crucial to understand how each of the .py files work and play together. Understanding when and where exactly we using what. (Gave me a solid base about the code structure)
+
+
+### What I tried / what failed
+- Still no access on Euler Cluster for accessing GPUs
+
+### Technical details & thoughts
+
+
+### MISSING
+- Plot the loss curve as training progresses - does validation loss track training loss?
