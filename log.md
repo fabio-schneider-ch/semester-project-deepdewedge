@@ -117,12 +117,19 @@ Thus k = (kz, ky, kx)
 - setup my own GPU such that I can use it for training purpose. 
 - ran the step 3 with the provided pre-trained checkpoint (fitted_model.ckpt) and it worked (~ 2 hrs runtime)
 - One could see the reduced blurring in the comparison of refined tomogram and the original one
-
+- Got ra-cluster access without VPN access, setup my desktop and started with the conda environment again
+- Started the refinement process on the ra cluster aswell (step03 tutorial), it worked with GPU access. Setup should now be ready.
+- comparison figure for the input vs refined (saved as png, visible in figures directory)
+- reading and understanding  refine_tomogram.py
 
 ### What I tried / what failed
 - tried to get access to the ra-cluster with VPN-access but I could not get VPN access since this is not possible for external users at PSI. 
-- 
 
 ### Technical details & thoughts
 - learned how to use my own GPU for ML (setup and allocation)
+- connection to ra-cluster, getting to know linux and linux terminal. Starting the .py files from linux terminal.
+
+
+### MISSING
+- afternoon, power spectrum analysis, working FSC function
 
