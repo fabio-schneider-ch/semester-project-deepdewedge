@@ -106,3 +106,23 @@ Thus k = (kz, ky, kx)
 
 ### MISSING
 - Plot the loss curve as training progresses - does validation loss track training loss?
+
+
+
+
+## 2026-05-11
+
+### What I did
+- setup the repo on my computer and created the conda environment locally on my computer
+- setup my own GPU such that I can use it for training purpose. 
+- ran the step 3 with the provided pre-trained checkpoint (fitted_model.ckpt) and it worked (~ 2 hrs runtime)
+- One could see the reduced blurring in the comparison of refined tomogram and the original one
+
+
+### What I tried / what failed
+- tried to get access to the ra-cluster with VPN-access but I could not get VPN access since this is not possible for external users at PSI. 
+- 
+
+### Technical details & thoughts
+- learned how to use my own GPU for ML (setup and allocation)
+

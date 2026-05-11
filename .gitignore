@@ -210,3 +210,22 @@ notebooks/tutorial/tutorial_data/
 notebooks/tutorial/tutorial_data.zip
 **/__MACOSX/
 notebooks/tutorial/tutorial_project/
+
+
+# Suggestion Tutorial
+tutorial_data/
+*.zip
+*.mrc
+*.rec
+*.ckpt
+*.pt
+
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
+
+lightning_logs/
+checkpoints/
+outputs/
+runs/
+errors/
