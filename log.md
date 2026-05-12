@@ -81,7 +81,7 @@ Thus k = (kz, ky, kx)
 - A5: We would use regions where we do not have a ground truth as a indicator for our model (loss), makes no sense since this region does not have good or complete information that would be helpful for reconstruction.
 
 ### MISSING
-- "launch training: ddw fit-model --config config.yaml
+- "launch training: ddw fit-model --config config.yaml"
 - Monitor metrics.csv: watch fitting loss and val loss decrease
 
 
@@ -128,8 +128,27 @@ Thus k = (kz, ky, kx)
 ### Technical details & thoughts
 - learned how to use my own GPU for ML (setup and allocation)
 - connection to ra-cluster, getting to know linux and linux terminal. Starting the .py files from linux terminal.
+- source /scratch/ext-schnei_f/envs/ddw_env/bin/activate (to activate the ddw__env environment on the ra cluster in the morning)
 
+
+
+## 2026-05-12
+
+### What I did
+- started the training from day 3 on the ra cluster. "launch training: ddw fit-model --config config.yaml"
+- currently at epoch 80 from 200, I checked such that the metrics.csv is actually tracking and I later can look at the fitting loss and validation loss decrease
+- setup a notebook for the FSC function and ran some simple comparison from an even and odd tomogram
+- computed and plotted the 3D spectrum of input and refined tomogram, compared the middle slize (2D) and one can see how the missing wedge gets filled up.
+- setup jupyter notebook for the mw angle sweep
+- ra cluster training is at 75% at the end of the day
+
+
+### What I tried / what failed
+- used the wrong training setup on the ra cluster, when I lost the connection it stopped the training. Had to restart with some tmux command such that it runs independently of my connection.
+- running the refinement proccess on my microsoft surface failed miserably, jupyter notebook never finished with the cell, could not check if something is done in the background or if it was just stuck...
+
+### Technical details & thoughts
+- Tried using my laptop for the refinement mw angle sweep part, did not work! Need either my GPU from my computer (was not at home today) or the ra-cluster (which was occupied with the training). Will try to run this mw angle sweep tomorrow and see if the outputs are correct.
 
 ### MISSING
-- afternoon, power spectrum analysis, working FSC function
-
+Afternoon of day 6 and actual running all of the inference steps

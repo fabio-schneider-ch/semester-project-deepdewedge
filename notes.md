@@ -200,3 +200,12 @@ During model fitting, DeepDeWedge also performs iterative refinement of the inpu
 After training, the fitted U-Net is used for inference, meaning it is applied to refine a full tomogram. The full tomogram is again split into overlapping sub-tomograms. Each sub-tomogram is passed through the trained model to obtain a denoised and missing-wedge-corrected prediction. Finally, the predicted sub-tomograms are reassembled into a full refined tomogram. In overlapping regions, linear ramp weighting is used so that the centers of sub-tomograms are trusted more than their boundaries. This avoids visible seams and produces a smooth final reconstruction.
 
 The final output is a refined tomogram with reduced noise and partially filled missing-wedge information, leading to more isotropic resolution and better interpretability of structures in 3D.
+
+
+
+## 2026-05-12
+
+## FSC function
+FSC measures how similar two 3D volumes in fourier space are, seperated by frequencies. So are they similar at low freq? similar at mid freq? and so on. Depending on the frequencies it corresponds to different things regarding the volumes. High frequencies -> more fine details. Low frequencies -> big, broader structures. When real structure is existing, the volumes should be similar. Noise on the other hand should be independent and thus no strong correlation.
+
+One uses fourier shells, these are not infinitesimal shells, they actually have some depth. (f. ex. radius 0 to 1). Calculate the distance r for each point in fourier space. Same r corresponds to same spatial frequencies. Now in these shells we have: F1_shell = Fourier coeff. of vol1 in this shell and F2_shell = Four. coeff. of vol2 in this shell. Now calc. the correlation term: FSC = sum(F1 * conj(F2)) / sqrt(sum(|F1|^2) * sum(|F2|^2)) where the conj() is the complex conjugate (important since Fourier coeff. are complex numbers) We later still take the real part of that because we can still end up with complex numbers bc computation wise. This is normalized bc. of the denominator which leads to values from -1 to 1. (anti correlated to correlated) Which is known. Usually one looks at threshold numbers to make conclusions.
