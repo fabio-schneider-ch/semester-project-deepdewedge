@@ -80,9 +80,6 @@ Thus k = (kz, ky, kx)
 - Q5: What would happen if you computed loss everywhere?
 - A5: We would use regions where we do not have a ground truth as a indicator for our model (loss), makes no sense since this region does not have good or complete information that would be helpful for reconstruction.
 
-### MISSING
-- "launch training: ddw fit-model --config config.yaml"
-- Monitor metrics.csv: watch fitting loss and val loss decrease
 
 
 
@@ -104,8 +101,6 @@ Thus k = (kz, ky, kx)
 ### Technical details & thoughts
 
 
-### MISSING
-- Plot the loss curve as training progresses - does validation loss track training loss?
 
 
 
@@ -152,3 +147,24 @@ Thus k = (kz, ky, kx)
 
 ### MISSING
 Afternoon of day 6 and actual running all of the inference steps
+
+
+
+## 2026-05-13 (extra day)
+
+### What I did
+- Day 4 Training Loss Analysis jupyter notebook where I plotted fit_loss and val_loss. Overall decrease is visible and both converge against the same loss. fit_loss is oscillating more around (more noise)
+- val_loss has less values but also less noise
+- started the refinement process on the ra cluster. (mw_angle_sweep)
+- jupyter notebook for the FSC comparison (ground truth was tomo _all_frames.rec)
+- compared and plotted the 5 different FSC for the 5 different mw angles
+- Calculated the FSC-0.5 threshold condition
+
+
+### What I tried / what failed
+- not sure if my funcitons are correct, since my outcome seems strange or does not align with the given table setup
+
+
+### Technical details & thoughts
+- training finished after 200 epochs. Around 16 hrs runtime. Everything worked well, log files all here and look complete.
+- still took almost 2 hours for 5 refinements (on ra cluster)
