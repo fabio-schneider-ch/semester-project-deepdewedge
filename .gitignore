@@ -219,6 +219,7 @@ tutorial_data/
 *.rec
 *.ckpt
 *.pt
+*.tar.gz
 
 __pycache__/
 .ipynb_checkpoints/
