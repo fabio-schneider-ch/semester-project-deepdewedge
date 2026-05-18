@@ -210,7 +210,16 @@ FSC measures how similar two 3D volumes in fourier space are, seperated by frequ
 
 One uses fourier shells, these are not infinitesimal shells, they actually have some depth. (f. ex. radius 0 to 1). Calculate the distance r for each point in fourier space. Same r corresponds to same spatial frequencies. Now in these shells we have: F1_shell = Fourier coeff. of vol1 in this shell and F2_shell = Four. coeff. of vol2 in this shell. Now calc. the correlation term: FSC = sum(F1 * conj(F2)) / sqrt(sum(|F1|^2) * sum(|F2|^2)) where the conj() is the complex conjugate (important since Fourier coeff. are complex numbers) We later still take the real part of that because we can still end up with complex numbers bc computation wise. This is normalized bc. of the denominator which leads to values from -1 to 1. (anti correlated to correlated) Which is known. Usually one looks at threshold numbers to make conclusions.
 
+## FSC Resolution and Threshold Lines
+-FSC compares two reconstructions, which should contain the same real structure but from very independent datasets. Then if two reconstructions for some frequency are still strongly correlated this corresponds to a reproducable structure (possibly). If correlation drops below a certain value, we say its more and more dominated by noise and artefacts. (non reproducable)
+Find threshold frequency. Beyond this frequency, the reconstructed information is no longer reliably supported by independent measurements according to this FSC criterion.
+- In general: resolution ~ wavelength = 1 / spatial_frequency
+Normalized frequencys often 1 = Nyquist freq. where f_Ny = 1 / (2 * Voxel_size)
+For normalized frequencies: physical frequency = f_norm * f_Nyquist = f_norm / (2 * voxel_size) and
+resolution = 1 / physical frequency = 2 * voxel_size / f_norm
+
 
 ## Experiment 1 Week 2
 - Interpretation of the FSC plots and the values
-- The FSC against the FBP all-frames reference remains high for all inference-time angle assumptions. The smaller angle assumptions show slightly higher correlation with the FBP reference, likely because they modify the FBP reconstruction less strongly. Therefore, this FSC should be interpreted as similarity to the FBP reference rather than absolute reconstruction quality.
+- Initially, I computed FSC between each refined tomogram and the all-frame FBP reconstruction. However, this should be interpreted only as similarity to a reference reconstruction, not as a true resolution estimate, because the all-frame FBP is not a ground truth and still contains missing-wedge artifacts. For resolution estimation, I therefore compute FSC between independently refined even-frame and odd-frame reconstructions for each mw_angle condition. The FSC-0.5 crossing then provides a gold-standard-like estimate of the reproducible resolution for each angle condition.
+-If I use the correct trained model, but I tell the refinement step the wrong missing-wedge geometry, does the final reconstruction resolution degrade? Thats more the question that wants to be answered here and therefore I compute even vs odd for each mw angle and compute FSC here. 

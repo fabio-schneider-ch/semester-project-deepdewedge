@@ -168,3 +168,27 @@ Afternoon of day 6 and actual running all of the inference steps
 ### Technical details & thoughts
 - training finished after 200 epochs. Around 16 hrs runtime. Everything worked well, log files all here and look complete.
 - still took almost 2 hours for 5 refinements (on ra cluster)
+
+
+
+
+## 2026-05-18
+
+### What I did
+- got access to /das/work/pgroup
+- environment setup there such that my environment or data wont get deleted all the time
+- updated the day 6 FSC notebook such that I actually calculate the resolution aswell. Resolution given through the wavelength. Basically as long as some FSC for a frequency is correlated (close to 1), most likely these means we are capturing real structure since the input tomos are independent. So our model actually learned the same structure, if we end up with 0 correlation this means we are looking at noise.
+
+
+
+### What I tried / what failed
+- lost my progress on the ra-cluster since I was working on my home directory, there the 20GiB limitation forced me to use the /scratch/. After not using the connection for 3 days it got terminated and only part of the environment on the home/ext-schnei_f/ was not deleted.
+- tried getting access to /das/work/ directory but I did not have access yet.
+- also realized that my FSC comparison of day 6 is wrong. I do not calculated any resolutions and compare them. I did compare the single refined tomograms for a fixed mw to the so called "ground truth" in the plan (all_frames.rec) which actually is not a ground truth, just even + odd and still has noise + missing wedge
+
+
+
+### Technical details & thoughts
+-setting up correct working space on a cluster is important
+-also AI told me not to push any .cpkt .csv .rec and so on, but after the deletion of my ra cluster, I lost all these files because were not pushed to github (AI told me too much storage) 
+- Would def. to this different in the future, this was annoying but very helpful. Better to learn / experience this now than in the future.
