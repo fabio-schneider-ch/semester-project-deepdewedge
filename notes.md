@@ -216,7 +216,15 @@ Find threshold frequency. Beyond this frequency, the reconstructed information i
 - In general: resolution ~ wavelength = 1 / spatial_frequency
 Normalized frequencys often 1 = Nyquist freq. where f_Ny = 1 / (2 * Voxel_size)
 For normalized frequencies: physical frequency = f_norm * f_Nyquist = f_norm / (2 * voxel_size) and
-resolution = 1 / physical frequency = 2 * voxel_size / f_norm
+resolution = 1 / physical frequency = 2 * voxel_size / f_norm¨
+
+## Interpretation of the even/odd FSC angle sweep
+
+The global even/odd FSC compares the consistency between the independently refined even and odd tomograms. In this sweep, the 30° condition shows the lowest correlation at high spatial frequencies, which is consistent with under-filling: the assumed missing wedge is too small, so parts of the true missing wedge remain uncorrected.
+
+The 50° condition corresponds to the nominal/correct missing wedge angle and performs well. Interestingly, the 60° and 70° curves are slightly higher in the high-frequency range. This should not automatically be interpreted as physically better reconstruction. A larger assumed missing wedge may lead to stronger model-based correction or smoothing, which can increase even/odd consistency while potentially introducing shared bias or over-filling artifacts.
+
+Therefore, the global FSC result should be interpreted together with qualitative XZ/YZ slices and Fourier-space power spectra.
 
 
 ## Experiment 1 Week 2

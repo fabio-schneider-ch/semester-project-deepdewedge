@@ -192,3 +192,40 @@ Afternoon of day 6 and actual running all of the inference steps
 -setting up correct working space on a cluster is important
 -also AI told me not to push any .cpkt .csv .rec and so on, but after the deletion of my ra cluster, I lost all these files because were not pushed to github (AI told me too much storage) 
 - Would def. to this different in the future, this was annoying but very helpful. Better to learn / experience this now than in the future.
+
+
+
+## 2026-05-19
+
+### What I did
+- setup my conda environment on the p23/p23467 group. Also made some directory such that I can use this for the big files I train/refine.
+- uploaded the data to the ra-cluster (even/odd/mask/model etc) needed for the refinement.
+- copied the refine_tomogram.py and made a new .py file where we do not average over even and odd but rather extract the even and odd tomograms. Which we need for FSC gold standard.
+- Tried refinement with the new .py file (currently running)
+- switched to batchsize = 1 since I got errors (to much memory needed, more than was free) when starting the refinement with batchsize= 5 or 10.
+
+### What I tried / what failed
+- connection problems with ra cluster during the morning
+- refinement with batchsize = 5 and batchsize = 10, failed because of not enough free memory
+- uploading files through nomachine failed, no reason why, could not use my mouse to access the upload menu
+
+### Technical details & thoughts
+- had a lot of technical problems today, mouse wasnt working in nomachine, no solution found currently
+- nomachine connection did not work
+- /das/home always gets loaded with .cache or .conda directorys which use up all of the free space I have left on my home/ext-schnei_f/, do not know why, the conda env. is setup on das/work/p... so really confusing.
+
+
+## 2026-05-21 (extra day 2)
+
+### What I did
+- tomograms did refine, got even, odd and even + odd for each mw_angle.
+- Used my jupyter notebooke for day 6 and got the FSC for the same angle but compared even and odd.
+- Saw that with increasing angle the FSC increased. Such that for mw=30° it was the worst. Especially towards the higher frequencies.
+
+
+### What I tried / what failed
+- Had again problems with using the download from the nomachine, my mouse was not correctly working. Could not click the bottom right menu used for the download.
+
+
+### Technical details & thoughts
+- Whenever I work on nomachine on my laptop I get problems with inputs from mouse and sometimes keyboard, tried using another mouse (not touchpad) but did not really help. When working from my stationary computer at home most of the things than work, I dont know if its just the microsoft surface that is giving me input problems or what exactly the problem is...
