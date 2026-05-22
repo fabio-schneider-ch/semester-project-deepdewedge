@@ -221,10 +221,14 @@ Afternoon of day 6 and actual running all of the inference steps
 - tomograms did refine, got even, odd and even + odd for each mw_angle.
 - Used my jupyter notebooke for day 6 and got the FSC for the same angle but compared even and odd.
 - Saw that with increasing angle the FSC increased. Such that for mw=30° it was the worst. Especially towards the higher frequencies.
+- started the model training for 40°, 50° and 60° with batchsize 2.
+- finished subexp01, the power spectrum analysis and the XZ, XY comparison ratios.
 
 
 ### What I tried / what failed
 - Had again problems with using the download from the nomachine, my mouse was not correctly working. Could not click the bottom right menu used for the download.
+- training the model with batchsize = 5, always out of memory error, always stopped the training.
+- switched to batchsize = 2, where it worked again, also 3 and 4 did not work, same memory error.
 
 
 ### Technical details & thoughts
