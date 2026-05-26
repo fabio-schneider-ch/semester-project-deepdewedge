@@ -243,6 +243,8 @@ Afternoon of day 6 and actual running all of the inference steps
 - analyzed under- and overfitting. Defined the boundaries to compare the different regions.
 - saved the plots for report purpose, wrote explanation in notes.md
 - finished training of all 3 different models (40°, 50°, 60°, unfortunately only with batchsize = 2)
+- notebook for loss analysis (for training the three different models)
+- Analyzed the loss curves
 
 
 ### What I tried / what failed
@@ -250,3 +252,4 @@ Afternoon of day 6 and actual running all of the inference steps
 
 ### Technical details & thoughts
 - understanding again that the models looks and refines the whole tomogram, the 30-50° region still gets filled /changed to some extent when using a 30° mask and a model trained on 50°. Explanation of the outcome in notes.md
+- Loss analysis: (converge stable / no failed training / similar speed / training difficulty different absolute values)
