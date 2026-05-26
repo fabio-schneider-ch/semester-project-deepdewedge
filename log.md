@@ -233,3 +233,20 @@ Afternoon of day 6 and actual running all of the inference steps
 
 ### Technical details & thoughts
 - Whenever I work on nomachine on my laptop I get problems with inputs from mouse and sometimes keyboard, tried using another mouse (not touchpad) but did not really help. When working from my stationary computer at home most of the things than work, I dont know if its just the microsoft surface that is giving me input problems or what exactly the problem is...
+
+
+
+## 2026-05-26 
+
+### What I did
+- finished 2D Fourier Slice comparison for 30°, 50° and 70°
+- analyzed under- and overfitting. Defined the boundaries to compare the different regions.
+- saved the plots for report purpose, wrote explanation in notes.md
+- finished training of all 3 different models (40°, 50°, 60°, unfortunately only with batchsize = 2)
+
+
+### What I tried / what failed
+
+
+### Technical details & thoughts
+- understanding again that the models looks and refines the whole tomogram, the 30-50° region still gets filled /changed to some extent when using a 30° mask and a model trained on 50°. Explanation of the outcome in notes.md
