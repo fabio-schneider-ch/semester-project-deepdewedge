@@ -221,7 +221,7 @@ Afternoon of day 6 and actual running all of the inference steps
 - tomograms did refine, got even, odd and even + odd for each mw_angle.
 - Used my jupyter notebooke for day 6 and got the FSC for the same angle but compared even and odd.
 - Saw that with increasing angle the FSC increased. Such that for mw=30° it was the worst. Especially towards the higher frequencies.
-- started the model training for 40°, 50° and 60° with batchsize 2.
+- started the model training for 40°, 50° and 60° with batchsize=2, num_epoch=200.
 - finished subexp01, the power spectrum analysis and the XZ, XY comparison ratios.
 
 
@@ -253,3 +253,17 @@ Afternoon of day 6 and actual running all of the inference steps
 ### Technical details & thoughts
 - understanding again that the models looks and refines the whole tomogram, the 30-50° region still gets filled /changed to some extent when using a 30° mask and a model trained on 50°. Explanation of the outcome in notes.md
 - Loss analysis: (converge stable / no failed training / similar speed / training difficulty different absolute values)
+
+
+## 2026-06-02
+
+### What I did
+- Training jobs train_mw40/50/60 completed on A100 via Slurm.
+- Optimized the loss_curve analysis. Decided to use the lowest val_loss value as the point where I choose the model. Since fit_loss could overfit and was oscillating a lot. -> (999 at mw40, 989 at mw50 and mw60)
+
+
+### What I tried / what failed
+- (training error) some subtomo .pt loading errors occurred near the end (Ran out of input / zip archive issue), but jobs completed and checkpoints were written. Need to verify refinement works with produced checkpoints.
+
+### Technical details & thoughts
+- 
