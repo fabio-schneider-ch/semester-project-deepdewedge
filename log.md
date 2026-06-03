@@ -278,4 +278,30 @@ Afternoon of day 6 and actual running all of the inference steps
 The combined FSC comparison shows that both inference-time and training-time angle choices affect the reconstruction, mainly at high spatial frequencies. In Sub-Exp 1, changing the inference angle directly changes the Fourier mask used during refinement. Therefore, the observed differences are linked to geometric failure modes: too small angles under-fill the true missing wedge, while too large angles can over-mask and modify regions that should not be treated as missing. In Sub-Exp 2, the inference angle is fixed to 50°, so all models fill the same Fourier region. The differences there reflect the learned model behaviour rather than a change in reconstruction geometry.
 Based on this, inference-time angle errors are the more physically direct and practically important error source to investigate further. Training-time errors affect high-frequency consistency, but a moderately wrong training angle can still produce reasonable results if the inference geometry is correct. Therefore, future work should focus on validating or estimating the correct inference-time missing-wedge angle and detecting underfilling/over-masking using Fourier-space diagnostics.
 
+
+
+## 2026-06-03
+
+
+### What I did
+- reading ddw paper to find out about their ground truth used for the FSC plots and CC plots.
+- understanding FSC calculation (which regions are used?)
+- ddw does: FSC(synthetic ground truth, refined tomo)
+- my code does: FSC(refined even, refined odd)
+- fourier difference maps for input and refined tomos (30°, 50°, 70°)
+- 
+
+### What I tried / what failed
+
+
+### Technical details & thoughts
+- Plot dimension such that it works in overleaf later
+#Full width
+figsize=(6.5,4)
+
+#Wide 2-panel figure
+figsize=(7.0,3.5)
+
+#Square-ish figure
+figsize=(5,4)
  

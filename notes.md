@@ -288,6 +288,11 @@ Training-time angle errors appear less direct. When all models are inferred with
 From a practical perspective, this makes inference-time angle selection the more promising target for improvement. Estimating the correct missing-wedge angle or validating it with Fourier-space diagnostics could directly reduce under-filling and over-masking. Training-time robustness is also relevant, but the results suggest that moderate training-angle mismatch does not completely break the reconstruction as long as the inference geometry is correct.
 
 
+## FSC explanation of high correlation, difference to findings in the paper
+Figure 6 and 7 in the paper are not with the same dataset made than I use. They are based on synthetic data where they actually have a real ground truth without noise. This explains why they get low FSC values, the real space pictures also look quite different in the paper when they have low correlation. 
+This stands in contrast to my FSC analysis, where the real space picture are really hard to tell apart from each other. Fourier space looks filled similar and thus we end up with high FSC values. My FSC measures consistency between two independently split reconstructions. 
+It is also important to mention that both, even and odd tomo.rec our inputs already share the same underlying biological structures, geometry and so on. When we then compute the FSC over the whole tomogram, a really big chunk of that should only have minor changes or some noise difference which gets even weaker after applying ddw on both. Thus high FSC value makes sense. Might not be the best method to get information about angle changes and mw angle changes. -> real space comparison, fourier space comparison (fp)
+
 
 ### besprechung
 
@@ -307,3 +312,13 @@ Verstehe was ist die ground truth im paper,
 verstehe was und wie die FSC plots gemacht werden im ddw paper
 Warum erreichen sie die threshold und ich nicht? Was ist der unterschied?
 Mache ich effektiv den richtigen mw angle wenn ich das in der config anpasse? Ja ich denke schon? aber vllt versichern wenn FSC wirklich nicht schlechter wird, FSC online bilder anschauen, droppt eigentlich sehr schnell nach 0 bei hohen frequenzen.
+
+
+
+
+
+- subexp 01 compare different refinement angles difference maps, also fourier slice regions and make good plots, good structures
+- subexp 02 make difference maps fourier with the different trained models outputs
+- subexp 03 generate a best model of my own, then compare with the one ddw gives me in the data, mine should be better compare all angles and slices
+- Make pdf and email first in the afternoon for the project update on manuel and yves
+- look at the rest 5 days to see what I actually have to do
