@@ -260,10 +260,22 @@ Afternoon of day 6 and actual running all of the inference steps
 ### What I did
 - Training jobs train_mw40/50/60 completed on A100 via Slurm.
 - Optimized the loss_curve analysis. Decided to use the lowest val_loss value as the point where I choose the model. Since fit_loss could overfit and was oscillating a lot. -> (999 at mw40, 989 at mw50 and mw60)
+- run the refinement with the newly trained models. -> used halves.py again to end up with even and odd tomograms to calculate a resolution.
+- notebook for FSC calculation and comparison for the three differently trained models.
+- Interpretation and understanding of the FSC plots, which model performs best or what can we even say about the models from this experimental setup?
+- Sub-Exp 2: Training angle matters, but less geometrically directly than inference angle. 60° training hurts consistency most. 40° training gives highest even/odd FSC, possibly because the training task is easier/more conservative. FSC-0.5 is never reached
+- project update mail for manuel and yves.
+
 
 
 ### What I tried / what failed
 - (training error) some subtomo .pt loading errors occurred near the end (Ran out of input / zip archive issue), but jobs completed and checkpoints were written. Need to verify refinement works with produced checkpoints.
+- calculating the resolution for different setups/experiments, never hit the 0.5 FSC threshold -> no resolution calc. possible
 
 ### Technical details & thoughts
-- 
+- What to do about comparing and calculating the resolution in voxel or angstrom size, when I never hit the 0.5 FSC threshold?
+- Thoughts on which one to pursue:
+The combined FSC comparison shows that both inference-time and training-time angle choices affect the reconstruction, mainly at high spatial frequencies. In Sub-Exp 1, changing the inference angle directly changes the Fourier mask used during refinement. Therefore, the observed differences are linked to geometric failure modes: too small angles under-fill the true missing wedge, while too large angles can over-mask and modify regions that should not be treated as missing. In Sub-Exp 2, the inference angle is fixed to 50°, so all models fill the same Fourier region. The differences there reflect the learned model behaviour rather than a change in reconstruction geometry.
+Based on this, inference-time angle errors are the more physically direct and practically important error source to investigate further. Training-time errors affect high-frequency consistency, but a moderately wrong training angle can still produce reasonable results if the inference geometry is correct. Therefore, future work should focus on validating or estimating the correct inference-time missing-wedge angle and detecting underfilling/over-masking using Fourier-space diagnostics.
+
+ 

@@ -1,5 +1,13 @@
 ## 2026-04-28
 
+### Config.yaml
+-min_nonzero_mask_fraction_in_subtomo: 0.3: has nothing to do with the mw_angle or geometry, solely if a choosen subtomogram from the big starting tomogram has enough useful information, if not we learn emptiness, doesnt help so we ignore it from the start and choose another subtomo.
+spatial mask / sample mask:
+liegt im Realraum auf dem Tomogramm
+Zweck: gute Subtomos aus relevanten Regionen auswählen
+wird mitgeliefert und kann verwendet werden.
+
+
 ### 'ddw/utils/fourier.py'
 
 - fft_dim = (-1, -2, -3) selects the dimension starting from the last entry (so from behind basically). This means -1 corresponds to x, -2 to y and -3  to z. This is also useful since other dimensions which come before zyx are ignored and the correct three dimensions are taken for the fft.
@@ -247,3 +255,55 @@ over-masking + unreliable filling or: over-filling attempt fails in the addition
 ## Model training for [40°, 50°, 60°] loss curves
 - The loss curves show stable convergence for all three training-angle conditions. All models exhibit a rapid initial decrease in both fitting and validation loss, followed by a plateau, indicating that none of the incorrect-angle training runs fails to optimize. The convergence speed is therefore broadly similar across the three conditions.
 - However, the absolute loss level depends systematically on the assumed training angle: the model trained with 40° reaches the lowest loss, the 50° model an intermediate loss, and the 60° model the highest loss. This should not be interpreted directly as better reconstruction quality for the 40° model. A smaller missing-wedge angle corresponds to a less aggressive masking task, whereas a larger angle forces the network to predict a larger and more difficult Fourier region. The loss comparison therefore mainly indicates that larger assumed missing-wedge angles make the self-supervised training objective harder, while the actual reconstruction quality must be assessed using the even/odd FSC after refinement.
+
+
+## FSC for different trained models [40°, 50°, 60°] evaluated for the same mw = 50°.
+In Sub-Experiment 2, all models were evaluated with the same inference-time missing-wedge angle of 50°. Therefore, the Fourier region treated as missing during refinement was identical for all three conditions, and differences in FSC can be attributed to the training time missing-wedge angle.
+
+The model trained with 40° gives the highest even/odd FSC, the 50° baseline is slightly lower, and the 60° model gives the lowest FSC, especially at higher spatial frequencies. This suggests that training with a larger missing-wedge angle makes the self-supervised reconstruction task harder and leads to less consistent refined half-maps. Conversely, the 40° model may be more conservative or easier to optimize, resulting in higher even/odd consistency.
+
+However, the higher FSC of the 40° model should not automatically be interpreted as physically more accurate reconstruction. Since FSC measures consistency between the even and odd reconstructions, a conservative or smoother model can also increase FSC. Therefore, the result indicates that training-time angle affects the learned reconstruction behaviour, but the physical plausibility should still be interpreted together with the Fourier power spectra and qualitative slices.
+
+
+## conclusion of subexp02
+Sub-Experiment 2 compares models trained with different missing-wedge angles (40°, 50°, 60°), while keeping the inference/refinement angle fixed at the correct value of 50°. Therefore, all three reconstructions use the same Fourier mask during refinement. Only the learned model differs.
+
+The even/odd FSC curves show that all three models reconstruct low spatial frequencies similarly well. This means that the large-scale structure is robust against moderate training-time angle errors. Differences mainly appear at higher spatial frequencies. The model trained with 40° gives the highest high-frequency FSC, the 50° model is slightly lower, and the 60° model gives the lowest high-frequency FSC. This suggests that the training-time missing-wedge angle mainly affects the consistency of fine-scale/high-frequency information rather than the recovery of coarse structures.
+
+The loss curves support this interpretation: the 40° training run reaches the lowest fitting and validation loss, while the 60° run reaches the highest loss. This could reflect the difficulty of the training task: a larger assumed missing wedge forces the model to predict a larger Fourier region and is therefore harder to optimize. (60° model)
+
+However, higher even/odd FSC does not automatically prove that the 40° model is physically more accurate. FSC measures consistency between the independently refined even and odd tomograms, not absolute correctness. A more conservative or smoother model can also increase even/odd correlation. Since the FSC curves remain above 0.5 up to the Nyquist frequency, no FSC-0.5 resolution can be extracted. Therefore, the comparison should be based on the full FSC curves and the mean high-frequency FSC, not on a numerical resolution value.
+
+Overall, Sub-Experiment 2 shows that training-time angle errors affect the learned reconstruction behaviour, especially at high frequencies, but they do not directly change which Fourier region is filled. In contrast, inference-time angle errors from Sub-Experiment 1 are geometrically more direct, because the inference angle determines which frequencies are treated as missing and therefore whether the reconstruction under-fills or over-masks the missing wedge.
+
+
+## Comparison subexp01 and subexp02
+Inference angle = geometry / mask / what gets filled.
+Training angle = learned prior / quality / how consistently it gets filled.
+
+The two experiments suggest that the inference-time angle is the more directly damaging parameter, because it determines the actual Fourier region that is filled during refinement. If this angle is too small, part of the true missing wedge remains under-filled; if it is too large, measured or partially reliable frequencies may be over-masked and replaced by uncertain model predictions. Therefore, inference-time errors can cause clear geometric failure modes.
+
+Training-time angle errors appear less direct. When all models are inferred with the correct 50° mask, the filled Fourier region is the same for all conditions. The training angle mainly affects the learned reconstruction behaviour, especially high-frequency consistency. This suggests that training-time errors influence how well the model fills the wedge, while inference-time errors determine what is filled.
+
+From a practical perspective, this makes inference-time angle selection the more promising target for improvement. Estimating the correct missing-wedge angle or validating it with Fourier-space diagnostics could directly reduce under-filling and over-masking. Training-time robustness is also relevant, but the results suggest that moderate training-angle mismatch does not completely break the reconstruction as long as the inference geometry is correct.
+
+
+
+### besprechung
+
+mehr details,
+struktur von teams
+mehr bilder
+einführung ddw erklären
+dann subexp01 erklären
+subexp02 erklären
+und dann was ich noch in subexp03 machen will oder vorhabe erklären
+
+
+Vergleich von real space maps, difference zwischen 30° 50° und 70° in realspace damit man sieht wo die unterschiede sind, sieht man von auge nicht
+
+
+Verstehe was ist die ground truth im paper,
+verstehe was und wie die FSC plots gemacht werden im ddw paper
+Warum erreichen sie die threshold und ich nicht? Was ist der unterschied?
+Mache ich effektiv den richtigen mw angle wenn ich das in der config anpasse? Ja ich denke schon? aber vllt versichern wenn FSC wirklich nicht schlechter wird, FSC online bilder anschauen, droppt eigentlich sehr schnell nach 0 bei hohen frequenzen.
