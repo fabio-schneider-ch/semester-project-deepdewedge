@@ -289,10 +289,11 @@ Based on this, inference-time angle errors are the more physically direct and pr
 - ddw does: FSC(synthetic ground truth, refined tomo)
 - my code does: FSC(refined even, refined odd)
 - fourier difference maps for input and refined tomos (30°, 50°, 70°)
-- 
+- progress report / midterm report for the supervisors.
 
 ### What I tried / what failed
-
+- computing the volume difference maps lead to a lot of jupyter notebook crashes.
+- easy fix: choose planes first and only calculated the difference for each plane once (3 planes) instead of a whole volume.
 
 ### Technical details & thoughts
 - Plot dimension such that it works in overleaf later
@@ -305,3 +306,17 @@ figsize=(7.0,3.5)
 #Square-ish figure
 figsize=(5,4)
  
+
+## 2026-06-04
+
+
+### What I did
+- training and fine tuning the parameters for my own model
+- reducing parameters until the ra cluster GPU let me train my model without "out of memory" errors
+- calculating fourier and real space difference maps for the subexp02
+- using the difference maps as insightful results instead of FSC
+
+### What I tried / what failed
+
+
+### Technical details & thoughts

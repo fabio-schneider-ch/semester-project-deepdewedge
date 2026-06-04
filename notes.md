@@ -294,6 +294,24 @@ This stands in contrast to my FSC analysis, where the real space picture are rea
 It is also important to mention that both, even and odd tomo.rec our inputs already share the same underlying biological structures, geometry and so on. When we then compute the FSC over the whole tomogram, a really big chunk of that should only have minor changes or some noise difference which gets even weaker after applying ddw on both. Thus high FSC value makes sense. Might not be the best method to get information about angle changes and mw angle changes. -> real space comparison, fourier space comparison (fp)
 
 
+## Training my own model
+mw_angle = 50:
+Use the correct/baseline missing wedge angle, because this is the physically correct angle for the tutorial data and gave the best results in my previous experiments.
+
+chans = 64:
+Use the full-size U-Net architecture from the DeepDeWedge paper. More channels increase the model capacity, so the network can learn more complex 3D structures and missing-wedge corrections.
+
+subtomo_size = 128:
+Larger subtomograms give the model more spatial context. This should help it learn larger structures and more consistent 3D geometry.
+
+smaller strides:
+Smaller strides create more overlapping training subtomograms. This increases the amount and diversity of training data extracted from the same tomogram.
+
+num_epochs higher:
+Train longer so the larger model has enough time to converge. The final checkpoint should still be chosen based on validation loss, not just the last epoch.
+
+
+
 ### besprechung
 
 mehr details,

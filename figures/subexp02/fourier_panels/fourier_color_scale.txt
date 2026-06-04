@@ -1,0 +1,3 @@
+fourier_vmin = 0.0
+fourier_vmax = 4.689112663269043
+quantity = absolute XZ log-power difference
