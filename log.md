@@ -315,8 +315,28 @@ figsize=(5,4)
 - reducing parameters until the ra cluster GPU let me train my model without "out of memory" errors
 - calculating fourier and real space difference maps for the subexp02
 - using the difference maps as insightful results instead of FSC
+- starting with drafts for methods and experiment section in report
+- jupyter notebook for finalizing the plots
 
 ### What I tried / what failed
-
+- getting the DDW paper layout for the combined axes plots of a sample
+- somehow very hard to reconstruct
 
 ### Technical details & thoughts
+- axes notation in plot (removed), should add all axis in the final plot s.t. same dimensions?
+- from which and how to import the colormap/colorbars? Only one needed but provided from 3-6 pictures??
+
+
+
+
+
+## 2026-06-08
+
+### What I did
+- 
+
+### What I tried / what failed
+- 
+
+### Technical details & thoughts
+- 
