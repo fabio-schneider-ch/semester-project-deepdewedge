@@ -329,14 +329,26 @@ figsize=(5,4)
 
 
 
-
 ## 2026-06-08
 
 ### What I did
-- 
+- cleaning up some older notebooks
+- plotting report ready figures, deciding on which figures I think are smart to include
+- Introduction and results draft text for report
+- training a new parameter optimization model 
+- conifg_02 in own model directory for specifications 
 
 ### What I tried / what failed
-- 
+- FSC calculation between input and refined in older notebook, check with claude 
+- try evaluation on FSC only in missing wedge? Why still so high? Function correct? Inputs correct?
+- CUDA Out-of-memory depending on subtomo size and sliding window (GPU vram limited?)
+
+ASK Wenxuan:
+- How to get Figure 1: from official DDW Paper such that I can use it?
+- Titles in report figures?
+- FSC plots how to include in the report? 
+
 
 ### Technical details & thoughts
-- 
+- check with wenxuan about the choosen plots
+- dimensions of colormaps in the final comparison figures
