@@ -352,3 +352,20 @@ ASK Wenxuan:
 ### Technical details & thoughts
 - check with wenxuan about the choosen plots
 - dimensions of colormaps in the final comparison figures
+
+
+
+
+
+## 2026-06-09
+
+### What I did
+- Introduction and Background drafts for report
+- Notebook for calculating metrics corresponding to the difference maps
+- such that one can compare not only visuals but also values
+
+### What I tried / what failed
+- FSC calculation of only the missing wedge region. Did bring FSC down to almost 0.5 Threshold for even/odd comparison. But that just shows me that for both even and odd, the model predicts roughly the same information for the fourier region, not really helpful as a comparison.
+
+### Technical details & thoughts
+- 

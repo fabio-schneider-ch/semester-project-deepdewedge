@@ -311,32 +311,13 @@ num_epochs higher:
 Train longer so the larger model has enough time to converge. The final checkpoint should still be chosen based on validation loss, not just the last epoch.
 
 
+## Metrics comparison of difference maps
+Within Subexp01, the refinement with an assumed missing-wedge angle of 70° deviates more strongly from the 50°/50° baseline than the 30° refinement. This is visible both in the average absolute real-space difference and in the high-percentile differences, suggesting that the 70° case introduces stronger and more spatially extended changes in the reconstructed density.
 
-### besprechung
+## Metrics comparison
+In both subexperiments, the “larger angle” condition shows stronger deviations from the 50° baseline than the “smaller angle” condition.
 
-mehr details,
-struktur von teams
-mehr bilder
-einführung ddw erklären
-dann subexp01 erklären
-subexp02 erklären
-und dann was ich noch in subexp03 machen will oder vorhabe erklären
+## Report Draft Metric comparison if included
+The quantitative difference metrics support the visual observations from the difference maps. In Subexp01, the refinement with an assumed missing-wedge angle of 70° deviates more strongly from the 50° baseline than the 30° refinement, both in real space and Fourier space. In Subexp02, the model trained at 60° also shows larger deviations from the train50/refine50 baseline than the model trained at 40°, although the difference is less pronounced, especially in Fourier space. Since no ground truth is available, these metrics should be interpreted as deviations from the corresponding baseline rather than as absolute reconstruction quality measures.
+---------------------- Use to support the claims from just the visualization plots? ---------------------
 
-
-Vergleich von real space maps, difference zwischen 30° 50° und 70° in realspace damit man sieht wo die unterschiede sind, sieht man von auge nicht
-
-
-Verstehe was ist die ground truth im paper,
-verstehe was und wie die FSC plots gemacht werden im ddw paper
-Warum erreichen sie die threshold und ich nicht? Was ist der unterschied?
-Mache ich effektiv den richtigen mw angle wenn ich das in der config anpasse? Ja ich denke schon? aber vllt versichern wenn FSC wirklich nicht schlechter wird, FSC online bilder anschauen, droppt eigentlich sehr schnell nach 0 bei hohen frequenzen.
-
-
-
-
-
-- subexp 01 compare different refinement angles difference maps, also fourier slice regions and make good plots, good structures
-- subexp 02 make difference maps fourier with the different trained models outputs
-- subexp 03 generate a best model of my own, then compare with the one ddw gives me in the data, mine should be better compare all angles and slices
-- Make pdf and email first in the afternoon for the project update on manuel and yves
-- look at the rest 5 days to see what I actually have to do
