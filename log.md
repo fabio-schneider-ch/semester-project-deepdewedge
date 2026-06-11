@@ -369,3 +369,20 @@ ASK Wenxuan:
 
 ### Technical details & thoughts
 - 
+
+
+
+## 2026-06-10
+
+### What I did
+- repo clean up
+- directory clean up
+- rewriting notebooks because of structural changes
+- readme
+- report draft writing
+
+
+### What I tried / what failed
+
+
+### Technical details & thoughts
