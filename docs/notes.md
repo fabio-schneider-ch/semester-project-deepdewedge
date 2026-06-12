@@ -336,10 +336,13 @@ The quantitative difference metrics support the visual observations from the dif
 
 - anscheinend state of the art wie es jetzt ist? Was wird verwendet? Keine Ahnung was sie da von mir will? (Aber auch nur im Report glaube ich?)
 
+
 - conclusion und discussion schreiben 
 - cleanup repo
 
+
 - eigenes deepdewedge layout structure in PowerPoint? (nur wenn noch Zeit)
+
 
 - wie presentation ? wie final presentation? (ab nächste woche)
 
