@@ -386,3 +386,29 @@ ASK Wenxuan:
 
 
 ### Technical details & thoughts
+
+
+
+## 2026-06-12
+
+### What I did
+- changing the plot layouts for the final plots
+- adding zoomed in regions for the most interesting part (physical wise)
+- wrote a notebook for going through different slices (every 20 slices)
+- and compare the difference maps to find slices with big differences
+- then looked at this zoomed in slice regions and compared real space slices to spot differences / elongation
+- possible to now compare zoomed in real space for subexp01 and subexp02 nevertheless outcome not as good
+- as I hoped for
+
+
+### What I tried / what failed
+- training and refining my model had some errors, fixed it and restarted
+- ra cluster problems or my .sh was wrong? not sure
+
+
+### Technical details & thoughts
+- my own trained model is not really looking like a huge difference to the tutorial model 
+- config for the DDW trained model is on github, mine is config_03.yaml for report and comparison
+
+
+

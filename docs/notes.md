@@ -326,15 +326,26 @@ The quantitative difference metrics support the visual observations from the dif
 
 ## MEETING
 - Mein eigenes model mit FBP und DDW (given by tutorial) vergleichen, Comparison wie üblich aber noch detail finden wo slices anders aussehen!
-- ZOOM in plots von den subexp01 und 02, worst condition vergleiche, mehrere wenn nötig
-- colormaps vllt auch bei den grayscales? Wie?
-- colorbars bei den grossen final plots rechts neben die entsprechenden plots und vllt zoom unten links
-- dpi hoch bei den missing wedge plots
+
+###
+- Verstehe die Colormaps und deren Werte, normalized? log? warum negativ? vorallem für die präsentation!
+
 - dpi hoch auf 600 und zooms durchgehen, zuerst mal mittlere XZ slice, danach jenachdem ein wenig vor oder zurück verschieben bei verschiednen y werten, nicht immer y_mid nehmen
-- report viel detailierter, section mit den formeln wie das mit den tomograms geht (wie deepdewedge)
-- section über das inverse problem, formeln
-- anscheinend state of the art wie es jetzt ist? Was wird verwendet? Keine Ahnung was sie da von mir will?
+
+- report viel detailierter, section mit den formeln wie das mit den tomograms geht (wie deepdewedge) +section über das inverse problem, formeln
+
+- anscheinend state of the art wie es jetzt ist? Was wird verwendet? Keine Ahnung was sie da von mir will? (Aber auch nur im Report glaube ich?)
+
 - conclusion und discussion schreiben 
 - cleanup repo
-- eigenes deepdewedge layout structure in PowerPoint?
-- wie presentation ? wie final presentation ?
+
+- eigenes deepdewedge layout structure in PowerPoint? (nur wenn noch Zeit)
+
+- wie presentation ? wie final presentation? (ab nächste woche)
+
+
+# Candidates for zoom
+- xy, 30/50, patchsize 64, nr 11 (start at 0)
+oder nr 20 auch nicht schlecht? 
+
+vllt allgm lieber grössere patchsize??
