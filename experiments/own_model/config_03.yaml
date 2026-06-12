@@ -37,6 +37,6 @@ fit_model:
 
 
 refine_tomogram:
-    model_checkpoint_file: /das/work/p23/p23467/ext-schnei_f/data/tutorial_data/fitted_model.ckpt
+    model_checkpoint_file: /das/work/p23/p23467/ext-schnei_f/outputs/models/own_model_03/logs/version_0/checkpoints/val_loss/epoch=2999-val_loss=2.64174.ckpt
     subtomo_overlap: 64
     batch_size: 5
