@@ -324,16 +324,28 @@ The quantitative difference metrics support the visual observations from the dif
 
 
 
+## Algortihm clarification
+- Take v_i^0
+- Rotate it
+- Add artificial missing wedge → input v_tilde_i^0
+- Feed input through U-Net:
+      output = f_theta(v_tilde_i^0)
+- Compare output with rotated v_i^1
+   only where comparison is meaningful
+ Backpropagate loss through the network
+
 ## MEETING
 - Mein eigenes model mit FBP und DDW (given by tutorial) vergleichen, Comparison wie üblich aber noch detail finden wo slices anders aussehen!
 
 ###
 - Verstehe die Colormaps und deren Werte, normalized? log? warum negativ? vorallem für die präsentation!
+- Warum nicht normalized im Fourier space / spectrum? Warum bis zu 3 hoch? 
+- Nochmals genaues verstehen von FSC, wie wird die resolution berechnet wenn wir welche threshold crossen? 
+- presentation finish subexperiment 02 and add subexperiment 03, add conclusion of the whole project? What else is missing? Check the sources, add a appendix / or extended after the End where I include other plots if questions come up. 
 
-- dpi hoch auf 600 und zooms durchgehen, zuerst mal mittlere XZ slice, danach jenachdem ein wenig vor oder zurück verschieben bei verschiednen y werten, nicht immer y_mid nehmen
+- Understanding of how realspace difference and fourier spectrum difference was computed? Formulas ready somewhere? Maybe report?
 
 - report viel detailierter, section mit den formeln wie das mit den tomograms geht (wie deepdewedge) +section über das inverse problem, formeln
-
 - anscheinend state of the art wie es jetzt ist? Was wird verwendet? Keine Ahnung was sie da von mir will? (Aber auch nur im Report glaube ich?)
 
 
@@ -341,10 +353,12 @@ The quantitative difference metrics support the visual observations from the dif
 - cleanup repo
 
 
-- eigenes deepdewedge layout structure in PowerPoint? (nur wenn noch Zeit)
 
 
-- wie presentation ? wie final presentation? (ab nächste woche)
+
+
+
+
 
 
 # Candidates for zoom
