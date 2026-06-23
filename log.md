@@ -418,7 +418,7 @@ ASK Wenxuan:
 ## 2026-06-17
 
 ### What I did
-
+Presentation & report
 
 
 ### What I tried / what failed
@@ -429,7 +429,13 @@ ASK Wenxuan:
 
 
 ## 2026-06-18
+Presentation & report
 
 ## 2026-06-19
+Presentation & report
 
 ## 2026-06-22
+Presentation & report
+
+## 2026-06-23
+Presentation & report
